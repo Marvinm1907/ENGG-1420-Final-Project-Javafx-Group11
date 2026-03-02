@@ -13,20 +13,20 @@ public class EventController {
     /*
     Add a new event to the list of events
      */
-    public void addEvent(String title, String location, int capacity) {
-        Event e = new Event(title, location, capacity);
+    public void addEvent(String title, String location, String capacity) {
+        Event e = new Event(title, location, Integer.parseInt(capacity));
         eventList.add(e);
     }
 
     /*
     Find the event with the eventId and reset the variables
      */
-    public void editEvent(int eventId, String title, String location, int capacity) {
+    public void editEvent(int eventId, String title, String location, String capacity) {
         for(int i = 0; i < eventList.size(); i++) {
             if (eventList.get(i).getEventId() == eventId) {
                 eventList.get(i).setTitle(title);
                 eventList.get(i).setLocation(location);
-                eventList.get(i).setCapacity(capacity);
+                eventList.get(i).setCapacity(Integer.parseInt(capacity));
                 System.out.println("EVENT IS UPDATED! " + eventId);
                 return; // exit early after update
             }
@@ -34,4 +34,16 @@ public class EventController {
         System.out.println("NO UPDATED FOR EVENT: " + eventId);
     }
 
+    public ArrayList<Event> getEventList() {
+        return eventList;
+    }
+
+    @Override
+    public String toString() {
+        String output = "";
+        for(Event e : eventList) {
+            output += e;
+        }
+        return output;
+    }
 }

@@ -64,4 +64,9 @@ public class Event {
     public Status getStatus() {
         return this.status;
     }
+
+    @Override
+    public String toString() {
+        return title + " " + location + " " + capacity + "\n";
+    }
 }

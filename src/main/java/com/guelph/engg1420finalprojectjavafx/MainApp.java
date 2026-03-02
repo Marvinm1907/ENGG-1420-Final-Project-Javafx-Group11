@@ -4,15 +4,17 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+// STAGE -> SCENE -> H/V Box
+
 // Main app will be the main stage and what we use to switch scenes
 public class MainApp extends Application {
     private Stage primaryStage; // main windows of the program
-
-    // STAGE -> SCENE -> H/V Box
+    private EventController eventController;
 
     @Override
     public void start(Stage stage) throws Exception {
         this.primaryStage = stage;
+        eventController = new EventController();
 
         // show something
         showMainView();
@@ -34,7 +36,14 @@ public class MainApp extends Application {
     }
 
     public void showEventsManagementView() {
-        EventsManagementView view = new EventsManagementView(this);
+        EventsManagementView view = new EventsManagementView(this, eventController);
+        Scene scene = new Scene(view.getView(), 600, 400);
+        primaryStage.setScene(scene);
+    }
+
+    // If you pass in null, we enable create mode, if you pass in an event then we use edit mode
+    public void showEventFormView(Event currEvent) {
+        EventFormView view = new EventFormView(this, eventController, currEvent);
         Scene scene = new Scene(view.getView(), 600, 400);
         primaryStage.setScene(scene);
     }
