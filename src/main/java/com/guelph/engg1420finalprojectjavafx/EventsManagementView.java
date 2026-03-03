@@ -14,34 +14,33 @@ public class EventsManagementView {
     private VBox root;
 
     public EventsManagementView (MainApp app, EventController controller) {
-        root = new VBox();
+        root = new VBox(); //made a new object of our "root"
 
         Label title = new Label("EVENTS MANAGEMENT");
-        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold");
+        title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold"); //Optional, just style
 
-        HBox buttonLayout = new HBox();
-        buttonLayout.setSpacing(4);
+        HBox buttonLayout = new HBox(); //Initiating a new Horizontal box. (row)
+        buttonLayout.setSpacing(4); //Set the spacing between the boxes
         Button createEventBtn = new Button ("CREATE EVENT");
         createEventBtn.setOnAction(e -> {
-            app.showEventFormView(null); // enable create view
+            app.showEventFormView(null); // enable createEvent view, allowing user to choose the button,
         });
         Button backBtn = new Button ("GO BACK");
         backBtn.setOnAction(e -> {
-            app.showMainView();
+            app.showMainView(); //When user wants to go back to menu
         });
-        buttonLayout.getChildren().addAll(backBtn, createEventBtn);
+        buttonLayout.getChildren().addAll(backBtn, createEventBtn); //to store backBtn and createEventBtn in the button layout
 
-        root.getChildren().addAll(title, buttonLayout);
+        root.getChildren().addAll(title, buttonLayout); //to label title and entire buttonLayout
 
         // include the edit page opn a button for each event
         for(Event ev: controller.getEventList()) {
-            Button b = new Button(ev.getEventId() + " " + ev.getTitle());
+            Button b = new Button(ev.getTitle() + " " + ev.getStatus());
             b.setOnAction(e -> {
                 app.showEventFormView(ev);
             });
             root.getChildren().add(b);
         }
-
 
     }
     public Parent getView() { return root;}

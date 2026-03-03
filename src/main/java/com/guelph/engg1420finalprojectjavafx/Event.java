@@ -20,7 +20,7 @@ public class Event {
         setTitle(title);
         setLocation(location);
         setCapacity(capacity);
-        this.eventId = rand.nextInt(10000);
+        this.eventId = rand.nextInt(99999) + 9999; // always a 5 digit number
         this.dateTime = LocalDateTime.now();
         this.status = Status.Active;
     }
@@ -63,6 +63,10 @@ public class Event {
 
     public Status getStatus() {
         return this.status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     @Override
