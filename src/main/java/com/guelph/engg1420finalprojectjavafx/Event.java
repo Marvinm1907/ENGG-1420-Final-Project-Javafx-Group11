@@ -14,6 +14,7 @@ public class Event {
 
     //    event constructors
     public Event() {
+
     }
 
     public Event(String title, String location, int capacity) {
@@ -67,10 +68,5 @@ public class Event {
 
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return title + " " + location + " " + capacity + "\n";
     }
 }

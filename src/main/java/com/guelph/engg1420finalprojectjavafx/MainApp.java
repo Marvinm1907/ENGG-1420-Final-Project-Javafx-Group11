@@ -8,20 +8,19 @@ import javafx.stage.Stage;
 
 // Main app will be the main stage and what we use to switch scenes and coordinate controllers and views
 // It extends
-public class MainApp extends Application {
+public class MainApp extends Application { //Mainapp inherits the application
     private Stage primaryStage; // main windows of the program
 
-    // ALL CONTROLLERS BLEW
+    // ALL CONTROLLERS (Handles
     private EventController eventController;
     private UserController userController;
-    // UserController ...
-    // Workshop Controller ...
+
 
     @Override
     public void start(Stage stage) throws Exception { //the interface starts
         this.primaryStage = stage; //For our mainstage
-        eventController = new EventController(); //creation of an eventController
-        userController = new UserController();
+        eventController = new EventController(); //creation of an eventController to combine GUI with backend code for User Management
+        userController = new UserController(); //Our controller of UserController to combine GUI with backend code for User Management
 
         // show something
         showMainView();
@@ -30,10 +29,10 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    public void showMainView() {
-        ShowMainView view = new ShowMainView(this); //this will display the mainMenu
+    public void showMainView() { //to show the mainMenu View, "this" represents the mainApp function
+        ShowMainView view = new ShowMainView(this); //this will display the mainMenu of all the managements
         Scene scene = new Scene(view.getView(), 600, 400); //How the viewers sees the pixels
-        primaryStage.setScene(scene);
+        primaryStage.setScene(scene); //Sets the scene for users view
     }
 
     public void showEventsManagementView() {
@@ -44,7 +43,7 @@ public class MainApp extends Application {
 
     // If you pass in null, we enable creatEvent mode, if you pass in an event then we use editEvents mode
     public void showEventFormView(Event currEvent) {
-        EventFormView view = new EventFormView(this, eventController, currEvent);
+        EventFormView view = new EventFormView(this, eventController, currEvent); //We set as parameter in order
         Scene scene = new Scene(view.getView(), 600, 400);
         primaryStage.setScene(scene);
     }
@@ -56,7 +55,7 @@ public class MainApp extends Application {
     }
 
     public void showUserFormView(User currUser) {
-        UserFormView view = new UserFormView(this, userController, currUser);
+        UserFormView view = new UserFormView(this, userController, currUser); //Will display the views, and accessing
         Scene scene = new Scene(view.getView(), 600, 400);
         primaryStage.setScene(scene);
     }

@@ -15,12 +15,13 @@ public class UserController {
      */
     public void addUser(String name, String email, String userType) {
         User u = new User(name, email, userType);
-        userList.add(u);
+        userList.add(u); //Creating a list of users, that will take in a parameters of name, email, usertype
     }
 
 
     /*
-    Using a for loop for users
+    Using a for loop, we want to compare the strings.
+    If the userList index equals to the userId
      */
     public void editUser(String userId, String name, String email, String userType) {
         for (int i = 0; i < userList.size(); i++) {

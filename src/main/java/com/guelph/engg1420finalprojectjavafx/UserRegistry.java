@@ -2,6 +2,7 @@ package com.guelph.engg1420finalprojectjavafx;
 
 import java.util.ArrayList;
 
+// Can be deleted since UserController does this logic
 public class UserRegistry {
 
     private ArrayList<User> users; // this stores all users

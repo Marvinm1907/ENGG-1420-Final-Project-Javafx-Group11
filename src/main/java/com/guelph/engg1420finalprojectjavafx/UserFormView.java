@@ -39,19 +39,18 @@ public class UserFormView {
             userTypeField.setText(currUser.getUserType());
         }
 
-        Button finishBtn = new Button();
+        Button finishBtn = new Button(); //Creation of a button (Create)
         if (isCreateMode) {
             finishBtn.setText("CREATE USER");
             finishBtn.setOnAction(e -> {
                 controller.addUser(
                     nameField.getText(),
                     emailField.getText(),
-                    userTypeField.getText()
-                );
+                    userTypeField.getText());
+                app.showManageUserView(); //Display UserManagement after everything is inputted
             });
-            app.showManageUserView();
         } else {
-            finishBtn.setText("UPDATE USER!");
+            finishBtn.setText("UPDATE USER");
             finishBtn.setOnAction(e -> {
                 controller.editUser(
                     currUser.getUserId(),

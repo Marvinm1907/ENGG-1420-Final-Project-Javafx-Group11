@@ -34,28 +34,28 @@ public class EventFormView {
         TextField locField = new TextField();
         TextField capField = new TextField();
 
-        ComboBox<Event.Status> statusComboBox = new ComboBox<>();
-        statusComboBox.getItems().addAll(Event.Status.values());
+        ComboBox<Event.Status> statusComboBox = new ComboBox<>(); //Creating a comboBox, a dropdown menu
+        statusComboBox.getItems().addAll(Event.Status.values()); //Get the items (enum vals) and we add
 
         // Set prompt for user
         titleField.setPromptText("Enter Title: ");
         locField.setPromptText("Enter Location: ");
         capField.setPromptText("Enter Capacity: ");
 
-        if (!isCreateMode) {
+        if (!isCreateMode) { //When not in create mode, we will access the currentEvent and set it
             titleField.setText(currEvent.getTitle());
             locField.setText(currEvent.getLocation());
             capField.setText(currEvent.getCapacity() + ""); // cap is an int but needs to be a string to be displayed
             statusComboBox.setValue(currEvent.getStatus());
         }
 
-        root.getChildren().addAll(title, titleField, locField, capField);
+        root.getChildren().addAll(title, titleField, locField, capField); //to access the root(VBox), and access the list, inputting elements
 
         Button finishBtn = new Button();
         if (isCreateMode) {
             finishBtn.setText("CREATE");
             finishBtn.setOnAction(e-> {
-                controller.addEvent(
+                controller.addEvent( //Call the controller and add event
                     titleField.getText(), //User will input the following text
                     locField.getText(),
                     capField.getText());
