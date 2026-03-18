@@ -24,6 +24,7 @@ public class EventController {
 
     /*
     Use a for loop and find the event with the eventId and reset the variables
+    When the EventID is equal to the eventId we found, we will set to the following strings/ints
      */
     public void editEvent(int eventId, String title, String location, String capacity, Event.Status stat) {
         for(int i = 0; i < eventList.size(); i++) {
@@ -38,7 +39,7 @@ public class EventController {
         }
         System.out.println("NO UPDATED FOR EVENT: " + eventId); //If no update, we will print a line to output nothing is changed
     }
-
+    //
     public ArrayList<Event> getEventList() {
         return eventList; //get the eventList and return the updated list of events
     }

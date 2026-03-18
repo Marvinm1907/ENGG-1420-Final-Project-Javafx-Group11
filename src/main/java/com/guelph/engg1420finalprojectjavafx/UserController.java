@@ -11,7 +11,7 @@ public class UserController {
     }
 
     /*
-    We want to add a new user to the lsit of users
+    We want to add a new user to the list of users
      */
     public void addUser(String name, String email, String userType) {
         User u = new User(name, email, userType);
@@ -25,7 +25,8 @@ public class UserController {
      */
     public void editUser(String userId, String name, String email, String userType) {
         for (int i = 0; i < userList.size(); i++) {
-            // use .equals if you need to compare strings (== does not work on strings)
+            // use .equals if you need to compare strings
+            //When the userID is equal to userID, we will set it to the following
             if (userList.get(i).getUserId().equals(userId)) {
                 userList.get(i).setName(name);
                 userList.get(i).setEmail(email);

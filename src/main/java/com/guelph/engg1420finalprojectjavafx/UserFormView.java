@@ -39,8 +39,8 @@ public class UserFormView {
             userTypeField.setText(currUser.getUserType());
         }
 
-        Button finishBtn = new Button(); //Creation of a button (Create)
-        if (isCreateMode) {
+        Button finishBtn = new Button(); //Creation of a button
+        if (isCreateMode) { //When user is in create mode
             finishBtn.setText("CREATE USER");
             finishBtn.setOnAction(e -> {
                 controller.addUser(
@@ -50,7 +50,7 @@ public class UserFormView {
                 app.showManageUserView(); //Display UserManagement after everything is inputted
             });
         } else {
-            finishBtn.setText("UPDATE USER");
+            finishBtn.setText("UPDATE USER"); //When user wants to update the user after creating a user
             finishBtn.setOnAction(e -> {
                 controller.editUser(
                     currUser.getUserId(),
@@ -62,15 +62,15 @@ public class UserFormView {
             app.showManageUserView();
         }
 
-        Button backBtn = new Button("GO BACK");
+        Button backBtn = new Button("GO BACK"); //Function to go back
         backBtn.setOnAction(e -> {
             app.showMainView();
         });
 
         root.getChildren().addAll(title, nameField, emailField, userTypeField, finishBtn, backBtn);
-    }
+    } //Applying the fields to the main VBox
 
     public Parent getView() {
-        return root;
+        return root; //Returning how the user views, returning the VBox
     }
 }

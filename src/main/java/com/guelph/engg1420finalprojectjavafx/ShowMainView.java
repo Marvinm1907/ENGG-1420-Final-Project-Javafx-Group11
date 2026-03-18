@@ -16,10 +16,11 @@ public class ShowMainView {
         root = new VBox();
         root.setSpacing(15);
 
+        //Creation of the main label the user sees
         Label title = new Label("CAMPUS EVENT BOOKING SYSTEM");
         title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold");
 
-        //Creation of horizontal box, where users will see the options in a column
+        //Creation of horizontal box, where users will see the options in a column.
         HBox buttonLayout = new HBox();
         buttonLayout.setSpacing(4);
         Button userManBtn = new Button("USER MANAGEMENT");
