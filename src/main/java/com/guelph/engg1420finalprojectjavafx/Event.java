@@ -1,10 +1,9 @@
 package com.guelph.engg1420finalprojectjavafx;
+
 import java.time.LocalDateTime;
-import java.util.Random;
 
 public class Event {
-    private Random rand = new Random();
-    private int eventId;
+    private String eventId;
     private String title;
     private LocalDateTime dateTime;
     private String location;
@@ -12,23 +11,36 @@ public class Event {
     public enum Status { Active, Cancelled }    // enum for event flags
     private Status status;
 
-    //    event constructors
-    public Event() {
 
+//    event constructors
+    public Event() {
     }
 
-    public Event(String title, String location, int capacity) {
+    // polymorphic method: update type-specific fields
+    public void updateTypeSpecificField(String field) {
+    }
+
+    public Event(String eventId, String title, LocalDateTime dateTime, String location,
+                 int capacity, Status status) {
+        setEventId(eventId);
         setTitle(title);
         setLocation(location);
         setCapacity(capacity);
-        this.eventId = rand.nextInt(99999) + 9999; // always a 5 digit number
-        this.dateTime = LocalDateTime.now();
-        this.status = Status.Active;
+        setDate(dateTime);
+        setStatus(status);
     }
 
-    //    setters
+//    setters
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setDate(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public void setLocation(String location) {
@@ -41,8 +53,12 @@ public class Event {
         }
     }
 
-    //    getters
-    public int getEventId() {
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+//    getters
+    public String getEventId() {
         return this.eventId;
     }
 
@@ -66,7 +82,23 @@ public class Event {
         return this.status;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void cancelEvent(ManageBooking manageBooking, Waitlist waitlist) {
+        setStatus(Status.Cancelled);
+
+        // cancel all confirmed/waitlisted bookings for this event
+        manageBooking.cancelAllForEvent(this.eventId);
+
+        // clear the waitlist
+        waitlist.clearOnEventCancellation();
+    }
+
+    @Override
+    public String toString() {
+        return "ID: " + eventId
+                + ", Title: " + title
+                + ", DateTime: " + dateTime
+                + ", Location: " + location
+                + ", Capacity: " + capacity
+                + ", Status: " + status;
     }
 }

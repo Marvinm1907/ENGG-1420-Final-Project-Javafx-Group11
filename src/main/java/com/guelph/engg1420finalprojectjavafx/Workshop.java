@@ -1,5 +1,7 @@
 package com.guelph.engg1420finalprojectjavafx;
 
+import java.time.LocalDateTime;
+
 public class Workshop extends Event {
     private String topic;
 
@@ -8,18 +10,29 @@ public class Workshop extends Event {
         this.topic = "";
     }
 
-    public Workshop(String title, String location, int capacity, String topic) {
-        super(title, location, capacity);
+    public Workshop(String eventId, String title, LocalDateTime dateTime, String location,
+                    int capacity, Status status, String topic) {
+        super(eventId, title, dateTime, location, capacity, status);
         setTopic(topic);
     }
 
-    //    setter
+//    setter
     public void setTopic(String topic) {
         this.topic = topic;
     }
 
-    //    getter
+//    getter
     public String getTopic() {
         return this.topic;
+    }
+
+    @Override
+    public void updateTypeSpecificField(String topic) {
+        setTopic(topic);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Type: Workshop, Topic: " + topic;
     }
 }
