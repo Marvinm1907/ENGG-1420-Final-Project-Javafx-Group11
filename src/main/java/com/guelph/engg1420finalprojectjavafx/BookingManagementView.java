@@ -1,4 +1,4 @@
-git package com.guelph.engg1420finalprojectjavafx;
+package com.guelph.engg1420finalprojectjavafx;
 
 import javafx.scene.Parent;
 import javafx.scene.control.*;

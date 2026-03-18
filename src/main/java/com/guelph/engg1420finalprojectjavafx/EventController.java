@@ -8,18 +8,30 @@ import java.util.List;
 // Handling creates, edits, and deletes - they edit the main list of data
 // This keeps all the logic inside one place without duplicate code
 public class EventController {
-    private ArrayList<Event> eventList; // This list stores all of the events in the system
+    private ManageEvent manageEvent; // This list stores all of the events in the system
 
     public EventController() {
-        eventList = new ArrayList<Event>(); //Create an arraylist of events
+        manageEvent = new ManageEvent();
+    }
+    // Adds a pre-built Event object directly — used by DataLoader at startup
+    public void addEventObject(Event event) {
+        manageEvent.addEvent(event);
     }
 
     /*
     Add a new event to the list of events
      */
-    public void addEvent(String title, String location, String capacity) {
+    public boolean addEvent(String eventId, String title, String dateTimeStr, String location, String capacityStr, String eventType, String typeSpecificField) {
         Event e = new Event(title, location, Integer.parseInt(capacity));
         eventList.add(e); //We will add an event "e" to the list
+    }
+
+    // Parse capacity — return false if not a valid number
+    int capacity;
+     try {
+        capacity = Integer.parseInt(capacityStr);
+    } catch (NumberFormatException e) {
+        return false;
     }
 
     /*
