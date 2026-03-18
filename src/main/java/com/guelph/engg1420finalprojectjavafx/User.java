@@ -1,22 +1,13 @@
 package com.guelph.engg1420finalprojectjavafx;
 
-import java.util.Random;
-
 public class User {
-    private Random rand = new Random();
+
     private String userId;
     private String name;
     private String email;
     private String userType; // student, staff, or guest
 
     // Constructor to create a new user
-    public User(String name, String email, String userType) {
-        this.userId = (rand.nextInt(99999) + 9999) + ""; //M
-        this.name = name;
-        this.email = email;
-        this.userType = userType.toLowerCase(); // make it lowercase for consistency
-    }
-
     public User(String userId, String name, String email, String userType) {
         this.userId = userId;
         this.name = name;
@@ -42,19 +33,7 @@ public class User {
         return userType;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
-    // This method returns booking limit based on user type
+    // This method returns booking limit based on user type, will use to assist booking class
     // We use if statements instead of subclasses to keep it simple
     public int getMaxBookings() {
         if (userType.equals("student")) return 3;
