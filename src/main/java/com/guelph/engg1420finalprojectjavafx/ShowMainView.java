@@ -1,10 +1,10 @@
 package com.guelph.engg1420finalprojectjavafx;
 
-import javafx.scene.Parent;
+import gjavafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class ShowMainView {
     // VBox store elements up and down
@@ -14,13 +14,12 @@ public class ShowMainView {
 
     public ShowMainView(MainApp app) {
         root = new VBox();
-        root.setSpacing(15);
+        root.setSpacing(20);
+        root.setStyle("-fx-padding: 30");
 
-        //Creation of the main label the user sees
         Label title = new Label("CAMPUS EVENT BOOKING SYSTEM");
         title.setStyle("-fx-font-size: 20px; -fx-font-weight: bold");
 
-        //Creation of horizontal box, where users will see the options in a column.
         HBox buttonLayout = new HBox();
         buttonLayout.setSpacing(4);
         Button userManBtn = new Button("USER MANAGEMENT");
@@ -29,6 +28,9 @@ public class ShowMainView {
         });
 
         Button bookingManBtn = new Button("BOOKING MANAGEMENT");
+        bookingManBtn.setOnAction(e -> {
+            app.showBookingManagementView();
+        });
 
         Button eventManBtn = new Button("EVENT MANAGEMENT");
         eventManBtn.setOnAction(e->{
@@ -36,12 +38,13 @@ public class ShowMainView {
         });
 
         Button waitlistManBtn = new Button("WAITLIST MANAGEMENT");
+        waitlistManBtn.setOnAction(e -> {
+            app.showWaitlistManagementView();
+        });
 
         buttonLayout.getChildren().addAll(userManBtn, bookingManBtn, eventManBtn, waitlistManBtn);
-        //Storing the buttons into the layout
 
         root.getChildren().addAll(title, buttonLayout);
-        //Added title and button layout to the VBox
     }
 
     public Parent getView() {
@@ -49,3 +52,4 @@ public class ShowMainView {
     }
 
 }
+
