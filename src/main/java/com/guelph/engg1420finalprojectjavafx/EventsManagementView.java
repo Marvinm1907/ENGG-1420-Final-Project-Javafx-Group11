@@ -36,7 +36,7 @@ public class EventsManagementView {
 
         topButtons.getChildren().addAll(backBtn, createEventBtn);
 
-        // -- Search and Filter section --
+        // Search and Filter section
         Label searchLabel = new Label("Search / Filter:");
         searchLabel.setStyle("-fx-font-weight: bold");
 
@@ -100,7 +100,7 @@ public class EventsManagementView {
         );
     }
 
-    // Renders the event list — one row per event with edit and cancel buttons
+    // Renders the event list; one row per event with edit and cancel buttons
     private void renderEvents(VBox container, ArrayList<Event> events,
                                MainApp app, EventController controller) {
         container.getChildren().clear();
@@ -125,7 +125,7 @@ public class EventsManagementView {
                     + " | Cap: " + ev.getCapacity()
                     + " | " + ev.getDateTime();
 
-            // Edit button — disabled if event is cancelled
+            // Edit button; disabled if event is cancelled
             Button editBtn = new Button(btnLabel);
             if (ev.getStatus() == Event.Status.Cancelled) {
                 editBtn.setDisable(true);
@@ -134,7 +134,7 @@ public class EventsManagementView {
                 app.showEventFormView(ev);
             });
 
-            // Cancel button — disabled if already cancelled
+            // Cancel button; disabled if already cancelled
             Button cancelBtn = new Button("CANCEL");
             if (ev.getStatus() == Event.Status.Cancelled) {
                 cancelBtn.setDisable(true);
