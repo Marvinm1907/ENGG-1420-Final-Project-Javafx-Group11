@@ -2,7 +2,6 @@ package com.guelph.engg1420finalprojectjavafx;
 
 import java.util.ArrayList;
 
-// Can be deleted since UserController does this logic
 public class UserRegistry {
 
     private ArrayList<User> users; // this stores all users
@@ -51,5 +50,10 @@ public class UserRegistry {
         for (User u : users) {
             System.out.println(u);
         }
+    }
+
+    // Returns all users as a list (used by GUI)
+    public ArrayList<User> getAllUsers() {
+        return new ArrayList<>(users);
     }
 }

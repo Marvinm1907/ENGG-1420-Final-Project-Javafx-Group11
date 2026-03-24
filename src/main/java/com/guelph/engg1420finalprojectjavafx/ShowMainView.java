@@ -1,6 +1,6 @@
 package com.guelph.engg1420finalprojectjavafx;
 
-import gjavafx.scene.Parent;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
