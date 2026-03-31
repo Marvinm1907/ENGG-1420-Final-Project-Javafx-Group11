@@ -40,7 +40,7 @@ public class MainApp extends Application {
     }
 
     public void showManageUserView() {
-        UserManagementView view = new UserManagementView(this, userRegistry);
+        UserManagementView view = new UserManagementView(this, userRegistry, manageBooking);
         Scene scene = new Scene(view.getView(), 700, 500);
         primaryStage.setScene(scene);
     }
@@ -72,7 +72,7 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
     }
 
-    // Called by EventsManagementView cancel button — cancels event + all its bookings + waitlist
+    // Called by EventsManagementView cancel button, cancels event + all its bookings + waitlist
     public void cancelEvent(String eventId) {
         Waitlist waitlist = waitlistRegistry.getOrCreate(eventId);
         eventController.cancelEvent(eventId, manageBooking, waitlist);
